@@ -1,2 +1,2 @@
-# Caapstone_Project
+# Capstone_Project
   "News On The Go"
