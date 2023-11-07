@@ -67,7 +67,7 @@ with open('ocr_chapter_timestamp.json', 'r') as file:
     data = json.load(file)
 
 # Read the transcript from transcript.txt
-with open('6nshi9eo39-5ff2-467b-aca9-822871c7fca5.txt', 'r') as transcript_file:
+with open('6nsj0yoa5h-d26a-4ca2-9903-124832515fd1.txt', 'r') as transcript_file:
     transcript_text = transcript_file.read()
 
 # Tokenize and remove stopwords from the transcript
@@ -82,12 +82,12 @@ word_frequencies = Counter(filtered_transcript_words)
 chapter_ranks = []
 for chapter in data:
     chapter_words = chapter['Words']
-    total_words_in_chapter = len(chapter_words)
+    total_words_in_transcript = len(filtered_transcript_words)  # Total words in the transcript
     chapter_rank = 0
     
     for word in chapter_words:
         word_frequency = word_frequencies.get(word.lower(), 0)
-        word_rank = word_frequency / total_words_in_chapter
+        word_rank = word_frequency / total_words_in_transcript  # Calculate word rank based on total words in the transcript
         chapter_rank += word_rank
     
     chapter_ranks.append({
@@ -112,6 +112,10 @@ with open('sorted_top_chapters.json', 'w') as outfile:
     json.dump(sorted_top_chapters, outfile, indent=4)
 
 print("Top n/2 chapters based on rank calculated, sorted, and saved to new_sorted_top_chapters.json.")
+
+
+
+
 
 
 
